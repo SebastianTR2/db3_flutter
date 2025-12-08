@@ -1,5 +1,6 @@
 package com.app.emsx.controllers.auth;
 
+import com.app.emsx.dto.LoginRequest;
 import com.app.emsx.dtos.auth.AuthenticationRequest;
 import com.app.emsx.dtos.auth.AuthenticationResponse;
 import com.app.emsx.dtos.auth.RegisterRequest;

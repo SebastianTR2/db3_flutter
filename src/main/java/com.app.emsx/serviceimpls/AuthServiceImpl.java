@@ -1,5 +1,6 @@
 package com.app.emsx.serviceimpls;
 
+import com.app.emsx.dto.LoginRequest;
 import com.app.emsx.dtos.auth.AuthenticationRequest;
 import com.app.emsx.dtos.auth.AuthenticationResponse;
 import com.app.emsx.dtos.auth.RegisterRequest;
@@ -76,6 +77,33 @@ public class AuthServiceImpl {
         );
 
         User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException("❌ Usuario no encontrado"));
+
+        String jwtToken = jwtService.generateToken(user);
+
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .userId(user.getId())
+                .email(user.getEmail())
+                .firstname(user.getFirstname())
+                .lastname(user.getLastname())
+                .role(user.getRole())
+                .build();
+    }
+
+    /**
+     * ✅ Login de usuario existente usando LoginRequest
+     */
+    public AuthenticationResponse login(LoginRequest request) {
+        // Tratamos el username como email para la autenticación
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getUsername(),
+                        request.getPassword()
+                )
+        );
+
+        User user = userRepository.findByEmail(request.getUsername())
                 .orElseThrow(() -> new RuntimeException("❌ Usuario no encontrado"));
 
         String jwtToken = jwtService.generateToken(user);
