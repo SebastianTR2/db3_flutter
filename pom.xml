@@ -14,10 +14,10 @@
     </parent>
 
     <groupId>com.app</groupId>
-    <artifactId>emsx</artifactId>
+    <artifactId>salesmasterpro</artifactId>
     <version>1.0.0</version>
-    <name>EMSX</name>
-    <description>Employee Management System with Spring Boot 3, JWT, MapStruct, and Clean Architecture</description>
+    <name>SalesMasterPro</name>
+    <description>SalesMasterPro Backend - Sales Management System with Spring Boot 3, JWT, PostgreSQL, Compatible with Flutter App</description>
 
     <properties>
         <java.version>17</java.version>
@@ -160,7 +160,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.app.emsx.EmsxApplication</mainClass>
+                    <mainClass>com.app.salesmasterpro.SalesMasterProApplication</mainClass>
                 </configuration>
             </plugin>
 
